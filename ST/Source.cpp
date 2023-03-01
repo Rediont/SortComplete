@@ -114,8 +114,9 @@ void Rank_Sort(int arr[], int size, int max_rank)
 			{
 				for (int j = (i + 1); 0 < j; j--)
 				{
-					if (arr[j] < arr[j - 1])
+					if (rank_arr[j] < rank_arr[j - 1])
 					{
+						swap(rank_arr[j - 1], rank_arr[j]);
 						swap(arr[j - 1], arr[j]);
 					}
 				}
@@ -124,8 +125,9 @@ void Rank_Sort(int arr[], int size, int max_rank)
 			{
 				for (int j = i; 0 < j; j--)
 				{
-					if (arr[j] < arr[j - 1])
+					if (rank_arr[j] < rank_arr[j - 1])
 					{
+						swap(rank_arr[j - 1], rank_arr[j]);
 						swap(arr[j - 1], arr[j]);
 					}
 				}
@@ -145,8 +147,8 @@ bool Test4()
 {
 	const int size = 6;
 	int max_rank = 2;
-	int test_arr[size] = { 2,6,1,8,-20,4 };
-	int predicted_arr[size] = { -20,1,2,4,6,8 };
+	int test_arr[size] = { 22,63,11,82,-20,47 };
+	int predicted_arr[size] = { -20,11,22,47,63,82 };
 	Rank_Sort(test_arr, size,max_rank);
 
 	if (std::equal(std::begin(test_arr), std::end(test_arr), std::begin(predicted_arr)))
@@ -164,8 +166,8 @@ bool Test5()
 {
 	const int size = 6;
 	int max_rank = 3;
-	int test_arr[size] = { 112,6,124,821,-200,468 };
-	int predicted_arr[size] = { -200,6,112,124,468,821 };
+	int test_arr[size] = { 112,636,124,821,-200,468 };
+	int predicted_arr[size] = { -200,112,124,468,636,821 };
 	Rank_Sort(test_arr, size, max_rank);
 
 	if (std::equal(std::begin(test_arr), std::end(test_arr), std::begin(predicted_arr)))
@@ -183,8 +185,8 @@ bool Test6()
 {
 	const int size = 6;
 	int max_rank = 5;
-	int test_arr[size] = { 11200,600,12400,82100,-20000,46800 };
-	int predicted_arr[size] = { -20000,600,11200,12400,46800,82100 };
+	int test_arr[size] = { 112,600,124,821,-2,468 };
+	int predicted_arr[size] = { -2,112,124,468,600,821 };
 	Rank_Sort(test_arr, size, max_rank);
 
 	if (std::equal(std::begin(test_arr), std::end(test_arr), std::begin(predicted_arr)))
@@ -198,7 +200,6 @@ bool Test6()
 		return false;
 	}
 }
-
 
 int main() 
 {
